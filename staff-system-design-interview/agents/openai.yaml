@@ -1,0 +1,7 @@
+interface:
+  display_name: "Staff System Design Interview"
+  short_description: "Build staff-level system design manuscripts"
+  default_prompt: "Use $staff-system-design-interview to turn this system-design question into a complete ninety-minute interview manuscript."
+
+policy:
+  allow_implicit_invocation: true

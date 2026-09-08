@@ -1,0 +1,7 @@
+interface:
+  display_name: "Staff Object-Oriented Design Interview"
+  short_description: "Build staff-level object design manuscripts"
+  default_prompt: "Use $staff-object-oriented-design-interview to turn this object-oriented design question into a complete interview manuscript with staged Python 3 code blocks."
+
+policy:
+  allow_implicit_invocation: true

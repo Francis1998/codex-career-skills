@@ -1,0 +1,9 @@
+.DS_Store
+*.private.md
+job_search/
+*.pdf
+*.doc
+*.docx
+*.csv
+.env
+.env.*

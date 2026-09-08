@@ -1,0 +1,7 @@
+interface:
+  display_name: "Manage Job Search"
+  short_description: "Research, review, submit, and track job applications"
+  default_prompt: "Use $manage-job-search to build my job-search profile, find suitable roles, prepare a review queue, and submit only the roles I approve."
+
+policy:
+  allow_implicit_invocation: true
