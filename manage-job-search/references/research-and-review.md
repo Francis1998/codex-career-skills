@@ -8,6 +8,10 @@ Use the user's profile, resume, context, and tracker to extract target and adjac
 
 Do not hard-code a profession or technology. Include adjacent roles when the resume shows a credible path. If the user gives no search window or candidate count, ask or choose a modest default and state it.
 
+## Company qualification gate
+
+Before ranking candidates, apply the current user's private company filter. For an unknown or private startup, require the user's stated minimum headcount and funding stage, or an independently verified equivalent in user, revenue, or product traction. A named exception list is user-specific: it may admit a high-signal company below the normal threshold, but does not excuse diligence on reputation, adoption, financing, runway, and sponsorship. Unknown headcount, stage, traction, or unverified recruiter claims are `FILTERED`, not recommendations, contact-first leads, blockers, or browser-preparation work. Technical fit alone does not override the company gate.
+
 ## Discovery
 
 Prefer employer career pages and ATS data, primary company announcements/filings, reputable reporting, job boards for discovery/repost timing, and labor/immigration data for sponsorship signals.

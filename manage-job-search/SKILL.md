@@ -40,6 +40,27 @@ Prefer a workspace structure such as:
 
 Never upload a private profile, resume, address, government identifier, application tracker, or other PII to a public repository unless the user explicitly requests that exact action.
 
+## State-editing and recovery protocol
+
+Treat queue, tracker, and profile updates as a small transaction even when the files are plain text:
+
+- Make one bounded edit at a time with exact anchors; do not rely on a large patch matching an entire Markdown table.
+- After every write, reread the affected section and check that the intended status, URL, and note changed. If an edit tool reports a mismatch or partial failure, inspect the current file and retry with a smaller exact edit; do not wait for the user or call the situation an external blocker.
+- Reconcile the queue and tracker before reporting completion. A role must not remain a submission blocker in one file after it has been filtered, applied, or returned to review in the other.
+- If a multi-file update partially succeeds, finish the remaining safe local edits before giving a status update. Report the internal recovery only as an implementation note, never as a user-side application blocker.
+- Run the skill validator and a focused status/URL scan after structural edits. Do not claim the workflow is updated until these checks pass.
+
+## Company qualification gate
+
+Before presenting an actionable role, read the current user's company-size, company-stage, traction, and risk rules from their private workspace profile. Apply that rule as a hard employer-level gate in addition to role fit:
+
+- For an unknown or private startup, require the user's stated minimum headcount and funding stage, or an explicitly equivalent independently verified user, revenue, or product-traction signal.
+- Honor a named exception list only when the current user explicitly provides it. Do not invent exceptions from a generic “hot startup” list.
+- Unknown headcount, unknown funding stage, unknown traction, and unverified recruiter or job-board claims fail the gate. Keep those records only as `FILTERED` audit entries, not as recommendations, contact-first leads, application blockers, or browser-preparation work.
+- Public or established employers may pass the company gate, but the exact role must still meet the user's function, level, location, work-mode, compensation, and authorization constraints.
+
+Technical fit alone cannot rescue an employer that fails the user's company gate. Re-check the gate before every new search wave and before preparing an application.
+
 ## Workflow modes
 
 Choose the smallest mode that satisfies the request:
@@ -71,9 +92,11 @@ Choose the smallest mode that satisfies the request:
 
 Use stable states:
 
-`DISCOVERED`, `REVIEW`, `APPROVE_CODEX`, `HOLD_PROTECTED`, `CONTACT_FIRST`, `LOW_PRIORITY`, `SUBMISSION_BLOCKED`, `APPLIED_USER`, `APPLIED_CODEX`, `RECRUITER_SCREEN`, `INTERVIEWING`, `REJECTED`, `WITHDRAWN`, `OFFER`.
+`DISCOVERED`, `REVIEW`, `APPROVE_CODEX`, `HOLD_PROTECTED`, `CONTACT_FIRST`, `LOW_PRIORITY`, `FILTERED`, `SUBMISSION_BLOCKED`, `APPLIED_USER`, `APPLIED_CODEX`, `RECRUITER_SCREEN`, `INTERVIEWING`, `REJECTED`, `WITHDRAWN`, `OFFER`.
 
 Do not use “applied” for a merely opened or partially filled form. Require a confirmation page, identifier, confirmation email, or a direct user report.
+
+Use `FILTERED` for a role that fails a configured hard filter such as company maturity, role family, level, or work authorization. Do not ask the user to follow up on a filtered role unless they explicitly override the filter.
 
 ## Handoff
 
