@@ -6,10 +6,13 @@ Read this reference only after a complete draft exists. Classify every finding a
 
 - The requested sequence, duration, format, output location, and explicit user constraints are followed.
 - The complete interview question appears immediately after the title, before the assumptions and design sequence.
-- A default ninety-minute time ledger assigns the entire final sixty minutes to deep dives, interviewer probes, closing synthesis, and the final workflow.
+- A default sixty-minute core is complete on its own and lands requirements, invariants, version zero, one highest-risk deep dive, failure/recovery, observability, and a close.
+- If a thirty-minute extension is included, it is explicitly labeled as optional and adds focused deep dives, scale/cost/security or operations, and follow-up probes without weakening the core.
 - Non-negotiable domain invariants appear before consistency, availability, and replication choices.
 - Every prioritized functional requirement has a complete end-to-end workflow.
 - The version-zero design is coherent and explicitly names the quantified targets it misses.
+- The version-zero section includes a compact service-and-data topology that can be drawn live; a dense business-state graph cannot be the only opening architecture view.
+- The manuscript includes explicit system interfaces or application programming interface examples before the high-level design.
 - The final integrated Mermaid diagram is literally the last content block.
 - Physical order is timed transcript, then untimed follow-up bank, then final integrated diagram, with no substantive section between the bank and final diagram.
 
@@ -26,6 +29,8 @@ Read this reference only after a complete draft exists. Classify every finding a
 - Security, isolation, cost, retention, migration, and independent health observation are handled when relevant.
 - Follow-up answers do not contradict the main design.
 - At least four progressive Mermaid diagrams exist and progress from version zero to the integrated design.
+- For a complex system, the diagrams separate service topology, data or stream topology, and business deep dives rather than combining every concern into one unreadable graph.
+- Study-oriented manuscripts include optional core tables, important fields, keys or indexes, and technology-selection trade-offs while marking what is live-interview detail versus study detail.
 - Candidate speech consistently uses first-person plural voice, and no implementation code or pseudocode appears outside Mermaid diagrams.
 - The final diagram's arrows reflect the prose: every required regional or asynchronous fan-out has a result path, every as-of or completeness constraint reaches the reader or evaluator, and no recovery or rejection edge bypasses authorization and admission.
 
@@ -36,7 +41,7 @@ Do not use shortened terms in candidate prose or visible diagram labels, even af
 ## Minor checks
 
 - Interviewer turns feel natural and leave room to redirect.
-- Prose is concise enough for the timed duration; reserve variants are clearly untimed.
+- Prose is concise enough for the sixty-minute core; extension variants are clearly labeled and untimed unless the user requests a full ninety-minute transcript.
 - Progressive diagrams show only the design state reached at that point.
 - Links resolve, headings are readable, and no unfinished placeholders remain.
 - Performance claims are identified as requirements, estimates, benchmarks, or measurements rather than unsupported guarantees.
